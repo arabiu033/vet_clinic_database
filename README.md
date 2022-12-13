@@ -91,6 +91,12 @@
 
 To get a local copy up and running, follow these steps.
 
+### Database Schema Diagram
+
+<br>
+
+![map](./map.png)
+
 ### Prerequisites
 
 In order to run this project you need:
@@ -112,6 +118,8 @@ cd vet_clinic_database
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 <!-- AUTHORS -->
 
