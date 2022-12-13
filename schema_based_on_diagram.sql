@@ -46,7 +46,7 @@ CREATE TABLE medical_histories (
   PRIMARY KEY (id)
 );
 
--- Join Table For medical_histories and treatments
+-- Join Table For medical_histories and treatments tables
 CREATE TABLE treatments_history (
   medical_history_id INT REFERENCES medical_histories(id),
   treatment_id INT REFERENCES treatments(id)
