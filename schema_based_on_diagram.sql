@@ -1,3 +1,6 @@
+/* Design from a giving schema entity relation diagram */
+
+-- patients table
 CREATE TABLE patients (
   id INT GENERATED ALWAYS AS IDENTITY,
   name VARCHAR(100),
@@ -5,6 +8,7 @@ CREATE TABLE patients (
   PRIMARY KEY (id)
 );
 
+-- invoices table
 CREATE TABLE invoices (
   id INT GENERATED ALWAYS AS IDENTITY,
   total_amount DECIMAL,
@@ -14,6 +18,7 @@ CREATE TABLE invoices (
   PRIMARY KEY (id)
 );
 
+-- invoices_items table
 CREATE TABLE invoice_items (
   id INT GENERATED ALWAYS AS IDENTITY,
   unit_price DECIMAL,
@@ -24,6 +29,7 @@ CREATE TABLE invoice_items (
   PRIMARY KEY (id)
 );
 
+-- treatment table
 CREATE TABLE treatments (
   id INT GENERATED ALWAYS AS IDENTITY,
   type VARCHAR(100),
@@ -31,6 +37,7 @@ CREATE TABLE treatments (
   PRIMARY KEY (id)
 );
 
+-- medical_histories table
 CREATE TABLE medical_histories (
   id INT GENERATED ALWAYS AS IDENTITY,
   admitted_at TIMESTAMP,
@@ -39,9 +46,8 @@ CREATE TABLE medical_histories (
   PRIMARY KEY (id)
 );
 
--- Join Table For medical_histories and treatments -- 
-
-CREATE TABLE treatment_history (
+-- Join Table For medical_histories and treatments
+CREATE TABLE treatments_history (
   medical_history_id INT REFERENCES medical_histories(id),
   treatment_id INT REFERENCES treatments(id)
 )
