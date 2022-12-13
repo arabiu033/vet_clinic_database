@@ -8,6 +8,15 @@ CREATE TABLE patients (
   PRIMARY KEY (id)
 );
 
+-- medical_histories table
+CREATE TABLE medical_histories (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  admitted_at TIMESTAMP,
+  patient_id INT REFERENCES patients(id),
+  status VARCHAR(100),
+  PRIMARY KEY (id)
+);
+
 -- invoices table
 CREATE TABLE invoices (
   id INT GENERATED ALWAYS AS IDENTITY,
@@ -15,6 +24,14 @@ CREATE TABLE invoices (
   generated_at TIMESTAMP,
   payed_at TIMESTAMP,
   medical_history_id INT REFERENCES medical_histories(id),
+  PRIMARY KEY (id)
+);
+
+-- treatment table
+CREATE TABLE treatments (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  type VARCHAR(100),
+  name VARCHAR(100),
   PRIMARY KEY (id)
 );
 
@@ -29,25 +46,13 @@ CREATE TABLE invoice_items (
   PRIMARY KEY (id)
 );
 
--- treatment table
-CREATE TABLE treatments (
-  id INT GENERATED ALWAYS AS IDENTITY,
-  type VARCHAR(100),
-  name VARCHAR(100),
-  PRIMARY KEY (id)
-);
-
--- medical_histories table
-CREATE TABLE medical_histories (
-  id INT GENERATED ALWAYS AS IDENTITY,
-  admitted_at TIMESTAMP,
-  patient_id INT REFERENCES patients(id),
-  status VARCHAR(100),
-  PRIMARY KEY (id)
-);
-
 -- Join Table For medical_histories and treatments tables
 CREATE TABLE treatments_history (
   medical_history_id INT REFERENCES medical_histories(id),
   treatment_id INT REFERENCES treatments(id)
 )
+
+CREATE INDEX mh1 ON medical_histories(patient_id ASC);
+CREATE INDEX inv1 ON invoices(medical_histories ASC);
+CREATE INDEX inv2 ON invoice_items(invoice_id ASC);
+CREATE INDEX inv3 ON invoice_items(treatment_id ASC);
