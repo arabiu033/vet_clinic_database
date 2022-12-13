@@ -95,7 +95,7 @@ To get a local copy up and running, follow these steps.
 
 <br>
 
-![map](./map.png)
+![map](./map.jpg)
 
 ### Prerequisites
 
