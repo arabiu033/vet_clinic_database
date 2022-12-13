@@ -56,3 +56,5 @@ CREATE INDEX mh1 ON medical_histories(patient_id ASC);
 CREATE INDEX inv1 ON invoices(medical_histories ASC);
 CREATE INDEX inv2 ON invoice_items(invoice_id ASC);
 CREATE INDEX inv3 ON invoice_items(treatment_id ASC);
+CREATE INDEX th1 ON treatments_history(medical_history_id ASC);
+CREATE INDEX th2 ON treatments_history(treatment_id ASC);
